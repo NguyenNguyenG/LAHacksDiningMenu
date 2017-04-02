@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/dining_hall_menu"
+            android:icon="@mipmap/ic_local_dining_white_24dp"
+            android:title="Dining Hall"/>
+        <item
+            android:id="@+id/hour_operation"
+            android:icon="@mipmap/ic_access_time_white_24dp"
+            android:title="Hour of Operation" />
+        <item
+            android:id="@+id/swipe_counts"
+            android:icon="@mipmap/ic_account_balance_wallet_white_24dp"
+            android:title="Swipe Counter" />
+        <item
+            android:id="@+id/friend_location"
+            android:icon="@mipmap/ic_location_on_white_24dp"
+            android:title="Friend Location" />
+    </group>
+
+
+</menu>
