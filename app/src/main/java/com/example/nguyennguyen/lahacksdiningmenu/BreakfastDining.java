@@ -3,12 +3,15 @@ package com.example.nguyennguyen.lahacksdiningmenu;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ProgressBar;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 
@@ -27,8 +30,8 @@ import java.util.HashMap;
  * A simple {@link Fragment} subclass.
  */
 public class BreakfastDining extends Fragment {
-
-
+    private ProgressBar progressBar;
+    private ScrollView scrollView;
     private ArrayList<ArrayList<String>> foodItems;
     private ArrayList<String> listDataHeader;
     public BreakfastDining() {
@@ -56,8 +59,12 @@ public class BreakfastDining extends Fragment {
             else
                 foodItems = new ArrayList<ArrayList<String>>();
         }
+        progressBar = (ProgressBar) getView().findViewById(R.id.progressBar);
+        scrollView = (ScrollView) getView().findViewById(R.id.BSV);
         new doit().execute();
     }
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -65,13 +72,20 @@ public class BreakfastDining extends Fragment {
     {
 
         View v = inflater.inflate(R.layout.fragment_breakfast_dining, container, false);
-        //new doit().execute();
         return v ;
     }
     public class doit extends AsyncTask<Void, Void, Void> {
+        @Override
+        protected void onPreExecute() {
+            progressBar.setVisibility(View.VISIBLE);
+            scrollView.setVisibility(View.GONE);
+            Log.d("item","HERE");
+            super.onPreExecute();
+        }
 
         @Override
         protected Void doInBackground(Void... params) {
+
             int count = 0;
             if(!foodItems.isEmpty())
                 return null;
@@ -110,12 +124,17 @@ public class BreakfastDining extends Fragment {
         @Override
         protected void onPostExecute(Void avoid)
         {
+            progressBar.setVisibility(View.GONE);
+            scrollView.setVisibility(View.VISIBLE);
             ArrayList<String> hall = new ArrayList<String>();
             for(String key:listDataHeader)
             {
                 hall.add(key);
                 Log.d("item", key);
             }
+
+
+
 
             TextView temp = (TextView) getView().findViewById(R.id.fresh1);
             temp.setText(foodItems.get(0).get(0));

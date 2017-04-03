@@ -8,328 +8,355 @@
 
     <!-- TODO: Update blank fragment layout -->
 
-    <ScrollView
+    <RelativeLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:visibility="gone"
+            android:indeterminateDrawable="@drawable/progress" >
+        </ProgressBar>
+
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:orientation="vertical"
-            android:background="#F7EFE2">
+            android:id="@+id/BSV">
 
-            <TextView
-                android:text="Bruin Plate"
-                android:textSize="40dp"
-                android:gravity="center"
-                android:textColor="@android:color/black"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/BP"
-                android:fontFamily="cursive" />
+                android:layout_height="match_parent"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:orientation="vertical"
+                android:background="#F7EFE2">
 
-            <TextView
-                android:text="Freshly Bowled"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                <TextView
+                    android:text="Bruin Plate"
+                    android:textSize="40dp"
+                    android:gravity="center"
+                    android:textColor="@android:color/black"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/BP"
+                    android:fontFamily="cursive" />
+
+                <TextView
+                    android:text="Freshly Bowled"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:textSize="23dp"
+                    android:textColor="@android:color/white"
+                    android:background="@drawable/rounded_corner"
+                    android:id="@+id/fresh"
+                    android:fontFamily="sans-serif-smallcaps" />
+
+
+                <TextView
+                    android:text="TextView"
+                    android:textSize="17dp"
+                    android:textColor="@android:color/black"
+                    android:paddingLeft="25dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:id="@+id/fresh1" />
+
+                <TextView
+                    android:text="TextView"
+                    android:textSize="17dp"
+                    android:paddingBottom="5dp"
+                    android:paddingTop="5dp"
+                    android:textColor="@android:color/black"
+                    android:paddingLeft="25dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/fresh2" />
+
+                <!--
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:id="@+id/freshlyBowled"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"></LinearLayout>
+                -->
+                <TextView
+                    android:text="Harvest"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:textSize="23dp"
+                    android:textColor="@android:color/white"
+                    android:background="@drawable/rounded_corner"
+                    android:id="@+id/harvest"
+                    android:fontFamily="sans-serif-smallcaps" />
+
+                <TextView
+                    android:text="TextView"
+                    android:paddingTop="5dp"
+                    android:layout_width="match_parent"
+                    android:textSize="17dp"
+                    android:textColor="@android:color/black"
+                    android:paddingLeft="25dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/harvest1" />
+                <TextView
+                    android:text="TextView"
+                    android:paddingTop="5dp"
+                    android:layout_width="match_parent"
+                    android:textSize="17dp"
+                    android:textColor="@android:color/black"
+                    android:paddingLeft="25dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/harvest2" />
+                <TextView
+                    android:text="TextView"
+                    android:paddingTop="5dp"
+                    android:layout_width="match_parent"
+                    android:textSize="17dp"
+                    android:textColor="@android:color/black"
+                    android:paddingLeft="25dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/harvest3" />
+                <TextView
+                    android:text="TextView"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:layout_width="match_parent"
+                    android:textSize="17dp"
+                    android:textColor="@android:color/black"
+                    android:paddingLeft="25dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/harvest4" />
+                <TextView
+                    android:text="Stone Oven"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:textSize="23dp"
+                    android:textColor="@android:color/white"
+                    android:background="@drawable/rounded_corner"
+                    android:id="@+id/Stone"
+                    android:fontFamily="sans-serif-smallcaps" />
+                <TextView
+                    android:text="TextView"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:layout_width="match_parent"
+                    android:textSize="17dp"
+                    android:textColor="@android:color/black"
+                    android:paddingLeft="25dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/stone1" />
+                <TextView
+                    android:text="Simply Grilled"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:textSize="23dp"
+                    android:textColor="@android:color/white"
+                    android:background="@drawable/rounded_corner"
+                    android:id="@+id/grill"
+                    android:fontFamily="sans-serif-smallcaps" />
+                <TextView
+                    android:text="TextView"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:layout_width="match_parent"
+                    android:textSize="17dp"
+                    android:textColor="@android:color/black"
+                    android:paddingLeft="25dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/grill1" />
+
+
+
+
+
+
+
+
+
+                <TextView
+                    android:text="De Neve"
+                    android:paddingTop="20dp"
+                    android:textSize="40dp"
+                    android:gravity="center"
+                    android:textColor="@android:color/black"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/DN"
+                    android:fontFamily="cursive" />
+
+                <TextView
+                    android:text="The Front Burner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:textSize="23dp"
+                    android:textColor="@android:color/white"
+                    android:background="@drawable/rounded_corner"
+                    android:id="@+id/front"
+                    android:fontFamily="sans-serif-smallcaps" />
+
+                <TextView
+                    android:text="TextView"
+                    android:textSize="17dp"
+                    android:textColor="@android:color/black"
+                    android:paddingLeft="25dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:id="@+id/front1" />
+
+                <TextView
+                    android:text="TextView"
+                    android:textSize="17dp"
+                    android:paddingBottom="5dp"
+                    android:paddingTop="5dp"
+                    android:textColor="@android:color/black"
+                    android:paddingLeft="25dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/front2" />
+
+                <TextView
+                    android:text="TextView"
+                    android:textSize="17dp"
+                    android:paddingBottom="5dp"
+                    android:paddingTop="5dp"
+                    android:textColor="@android:color/black"
+                    android:paddingLeft="25dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/front3" />
+
+                <TextView
+                    android:text="The Kitchen"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:textSize="23dp"
+                    android:textColor="@android:color/white"
+                    android:background="@drawable/rounded_corner"
+                    android:id="@+id/kitchen"
+                    android:fontFamily="sans-serif-smallcaps" />
+
+                <TextView
+                    android:text="TextView"
+                    android:paddingTop="5dp"
+                    android:layout_width="match_parent"
+                    android:textSize="17dp"
+                    android:textColor="@android:color/black"
+                    android:paddingLeft="25dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/kitchen1" />
+                <TextView
+                    android:text="TextView"
+                    android:paddingTop="5dp"
+                    android:layout_width="match_parent"
+                    android:textSize="17dp"
+                    android:textColor="@android:color/black"
+                    android:paddingLeft="25dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/kitchen2" />
+                <TextView
+                    android:text="TextView"
+                    android:paddingTop="5dp"
+                    android:layout_width="match_parent"
+                    android:textSize="17dp"
+                    android:textColor="@android:color/black"
+                    android:paddingLeft="25dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/kitchen3" />
+                <TextView
+                    android:text="TextView"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:layout_width="match_parent"
+                    android:textSize="17dp"
+                    android:textColor="@android:color/black"
+                    android:paddingLeft="25dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/kitchen4" />
+                <TextView
+                    android:text="TextView"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:layout_width="match_parent"
+                    android:textSize="17dp"
+                    android:textColor="@android:color/black"
+                    android:paddingLeft="25dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/kitchen5" />
+
+                <TextView
+                    android:text="The Pizzeria"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:textSize="23dp"
+                    android:textColor="@android:color/white"
+                    android:background="@drawable/rounded_corner"
+                    android:id="@+id/pizzeria"
+                    android:fontFamily="sans-serif-smallcaps" />
+                <TextView
+                    android:text="TextView"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:layout_width="match_parent"
+                    android:textSize="17dp"
+                    android:textColor="@android:color/black"
+                    android:paddingLeft="25dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/pizzeria1" />
+                <TextView
+                    android:text="The Grill"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:textSize="23dp"
+                    android:textColor="@android:color/white"
+                    android:background="@drawable/rounded_corner"
+                    android:id="@+id/TheGrill"
+                    android:fontFamily="sans-serif-smallcaps" />
+                <TextView
+                android:text="TextView"
                 android:paddingTop="5dp"
                 android:paddingBottom="5dp"
-                android:textSize="23dp"
-                android:textColor="@android:color/white"
-                android:background="@drawable/rounded_corner"
-                android:id="@+id/fresh"
-                android:fontFamily="sans-serif-smallcaps" />
-
-            <TextView
-                android:text="TextView"
+                android:layout_width="match_parent"
                 android:textSize="17dp"
                 android:textColor="@android:color/black"
                 android:paddingLeft="25dp"
-                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="5dp"
-                android:id="@+id/fresh1" />
+                android:id="@+id/thegrill1" />
+                <TextView
+                    android:text="TextView"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:layout_width="match_parent"
+                    android:textSize="17dp"
+                    android:textColor="@android:color/black"
+                    android:paddingLeft="25dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/thegrill2" />
+            </LinearLayout>
+        </ScrollView>
+    </RelativeLayout>
 
-            <TextView
-                android:text="TextView"
-                android:textSize="17dp"
-                android:paddingBottom="5dp"
-                android:paddingTop="5dp"
-                android:textColor="@android:color/black"
-                android:paddingLeft="25dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/fresh2" />
-
-            <TextView
-                android:text="Harvest"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp"
-                android:textSize="23dp"
-                android:textColor="@android:color/white"
-                android:background="@drawable/rounded_corner"
-                android:id="@+id/harvest"
-                android:fontFamily="sans-serif-smallcaps" />
-
-            <TextView
-                android:text="TextView"
-                android:paddingTop="5dp"
-                android:layout_width="match_parent"
-                android:textSize="17dp"
-                android:textColor="@android:color/black"
-                android:paddingLeft="25dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/harvest1" />
-            <TextView
-                android:text="TextView"
-                android:paddingTop="5dp"
-                android:layout_width="match_parent"
-                android:textSize="17dp"
-                android:textColor="@android:color/black"
-                android:paddingLeft="25dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/harvest2" />
-            <TextView
-                android:text="TextView"
-                android:paddingTop="5dp"
-                android:layout_width="match_parent"
-                android:textSize="17dp"
-                android:textColor="@android:color/black"
-                android:paddingLeft="25dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/harvest3" />
-            <TextView
-                android:text="TextView"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp"
-                android:layout_width="match_parent"
-                android:textSize="17dp"
-                android:textColor="@android:color/black"
-                android:paddingLeft="25dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/harvest4" />
-            <TextView
-                android:text="Stone Oven"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp"
-                android:textSize="23dp"
-                android:textColor="@android:color/white"
-                android:background="@drawable/rounded_corner"
-                android:id="@+id/Stone"
-                android:fontFamily="sans-serif-smallcaps" />
-            <TextView
-                android:text="TextView"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp"
-                android:layout_width="match_parent"
-                android:textSize="17dp"
-                android:textColor="@android:color/black"
-                android:paddingLeft="25dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/stone1" />
-            <TextView
-                android:text="Simply Grilled"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp"
-                android:textSize="23dp"
-                android:textColor="@android:color/white"
-                android:background="@drawable/rounded_corner"
-                android:id="@+id/grill"
-                android:fontFamily="sans-serif-smallcaps" />
-            <TextView
-                android:text="TextView"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp"
-                android:layout_width="match_parent"
-                android:textSize="17dp"
-                android:textColor="@android:color/black"
-                android:paddingLeft="25dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/grill1" />
-
-
-
-
-
-
-
-
-
-            <TextView
-                android:text="De Neve"
-                android:paddingTop="20dp"
-                android:textSize="40dp"
-                android:gravity="center"
-                android:textColor="@android:color/black"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/DN"
-                android:fontFamily="cursive" />
-
-            <TextView
-                android:text="The Front Burner"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp"
-                android:textSize="23dp"
-                android:textColor="@android:color/white"
-                android:background="@drawable/rounded_corner"
-                android:id="@+id/front"
-                android:fontFamily="sans-serif-smallcaps" />
-
-            <TextView
-                android:text="TextView"
-                android:textSize="17dp"
-                android:textColor="@android:color/black"
-                android:paddingLeft="25dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="5dp"
-                android:id="@+id/front1" />
-
-            <TextView
-                android:text="TextView"
-                android:textSize="17dp"
-                android:paddingBottom="5dp"
-                android:paddingTop="5dp"
-                android:textColor="@android:color/black"
-                android:paddingLeft="25dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/front2" />
-
-            <TextView
-                android:text="TextView"
-                android:textSize="17dp"
-                android:paddingBottom="5dp"
-                android:paddingTop="5dp"
-                android:textColor="@android:color/black"
-                android:paddingLeft="25dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/front3" />
-
-            <TextView
-                android:text="The Kitchen"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp"
-                android:textSize="23dp"
-                android:textColor="@android:color/white"
-                android:background="@drawable/rounded_corner"
-                android:id="@+id/kitchen"
-                android:fontFamily="sans-serif-smallcaps" />
-
-            <TextView
-                android:text="TextView"
-                android:paddingTop="5dp"
-                android:layout_width="match_parent"
-                android:textSize="17dp"
-                android:textColor="@android:color/black"
-                android:paddingLeft="25dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/kitchen1" />
-            <TextView
-                android:text="TextView"
-                android:paddingTop="5dp"
-                android:layout_width="match_parent"
-                android:textSize="17dp"
-                android:textColor="@android:color/black"
-                android:paddingLeft="25dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/kitchen2" />
-            <TextView
-                android:text="TextView"
-                android:paddingTop="5dp"
-                android:layout_width="match_parent"
-                android:textSize="17dp"
-                android:textColor="@android:color/black"
-                android:paddingLeft="25dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/kitchen3" />
-            <TextView
-                android:text="TextView"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp"
-                android:layout_width="match_parent"
-                android:textSize="17dp"
-                android:textColor="@android:color/black"
-                android:paddingLeft="25dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/kitchen4" />
-            <TextView
-                android:text="TextView"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp"
-                android:layout_width="match_parent"
-                android:textSize="17dp"
-                android:textColor="@android:color/black"
-                android:paddingLeft="25dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/kitchen5" />
-
-            <TextView
-                android:text="The Pizzeria"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp"
-                android:textSize="23dp"
-                android:textColor="@android:color/white"
-                android:background="@drawable/rounded_corner"
-                android:id="@+id/pizzeria"
-                android:fontFamily="sans-serif-smallcaps" />
-            <TextView
-                android:text="TextView"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp"
-                android:layout_width="match_parent"
-                android:textSize="17dp"
-                android:textColor="@android:color/black"
-                android:paddingLeft="25dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/pizzeria1" />
-            <TextView
-                android:text="The Grill"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp"
-                android:textSize="23dp"
-                android:textColor="@android:color/white"
-                android:background="@drawable/rounded_corner"
-                android:id="@+id/TheGrill"
-                android:fontFamily="sans-serif-smallcaps" />
-            <TextView
-            android:text="TextView"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
-            android:layout_width="match_parent"
-            android:textSize="17dp"
-            android:textColor="@android:color/black"
-            android:paddingLeft="25dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/thegrill1" />
-            <TextView
-                android:text="TextView"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp"
-                android:layout_width="match_parent"
-                android:textSize="17dp"
-                android:textColor="@android:color/black"
-                android:paddingLeft="25dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/thegrill2" />
-        </LinearLayout>
-    </ScrollView>
 </FrameLayout>
