@@ -1,10 +1,10 @@
 package com.example.nguyennguyen.lahacksdiningmenu;
 
-import android.os.AsyncTask;
+import android.app.ProgressDialog;
+
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
-import android.util.Log;
-import android.view.View;
+
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -13,7 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ProgressBar;
+
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -21,18 +21,17 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        ProgressDialog mProgess = new ProgressDialog(this);
+        mProgess.setMessage("Getting menu...");
+        Singleton.setDialog(mProgess);
+
         Singleton singleton = Singleton.getInstance();
 
-        try {
-            Thread.sleep(9000);
-
-        }catch (Exception e){
-            e.printStackTrace();
-        }
+        setContentView(R.layout.activity_main);
 
         TabFragment diningHallMenu = new TabFragment();
         FragmentManager fragmentManager = getSupportFragmentManager();
