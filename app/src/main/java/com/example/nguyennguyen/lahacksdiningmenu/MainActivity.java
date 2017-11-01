@@ -1,130 +1,88 @@
 package com.example.nguyennguyen.lahacksdiningmenu;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
-
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
 
-import android.support.design.widget.NavigationView;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.content.Loader;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.LinearLayout;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+import java.util.ArrayList;
+import android.app.LoaderManager;
 
+public class MainActivity extends Activity implements LoaderManager.LoaderCallbacks<ArrayList<JSONObject>> {
+    private Button mCallApiButton;
+    private static final String mUrl = "http://bruindining.herokuapp.com/overview?date=";
+    private Intent intent;
+    private final int Loader_ID = 1;
+    ProgressDialog mProgress;
+
+    /**
+     * Create the main activity.
+     * @param savedInstanceState previously saved instance data.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        LinearLayout activityLayout = new LinearLayout(this);
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.MATCH_PARENT);
+        activityLayout.setLayoutParams(lp);
+        activityLayout.setOrientation(LinearLayout.VERTICAL);
+        activityLayout.setPadding(16, 16, 16, 16);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        ViewGroup.LayoutParams tlp = new ViewGroup.LayoutParams(
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT);
 
-        ProgressDialog mProgess = new ProgressDialog(this);
-        mProgess.setMessage("Getting menu...");
-        Singleton.setDialog(mProgess);
+        mCallApiButton = new Button(this);
+        mCallApiButton.setText("Click");
 
-        Singleton singleton = Singleton.getInstance();
+        activityLayout.addView(mCallApiButton);
 
-        setContentView(R.layout.activity_main);
+        mProgress = new ProgressDialog(this);
+        mProgress.setMessage("Loading Menu ...");
 
-        TabFragment diningHallMenu = new TabFragment();
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.content_main,diningHallMenu,diningHallMenu.getTag()).commit();
-        getSupportActionBar().setTitle("Dining Halls Menu");
+        setContentView(activityLayout);
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
-
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
-    }
+        intent = new Intent(this, MessageActivity.class);
 
 
-    @Override
-    public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
-    }
+        mCallApiButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mCallApiButton.setEnabled(false);
+                mProgress.show();
+                mProgress.setCanceledOnTouchOutside(false);
+                getLoaderManager().initLoader(Loader_ID, null, MainActivity.this);
+                mCallApiButton.setEnabled(true);
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
+            }
+        });
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
+    public Loader<ArrayList<JSONObject>> onCreateLoader(int id, Bundle args) {
+        return new MenuLoader(getApplicationContext(), mUrl);
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
     @Override
-    public boolean onNavigationItemSelected(MenuItem item)
-    {
-        // Handle navigation view item clicks here.
-        int id = item.getItemId();
+    public void onLoadFinished(Loader<ArrayList<JSONObject>> loader, ArrayList<JSONObject> data) {
+        mProgress.dismiss();
+        Singleton.getInstance(data);
+        startActivity(intent);
+    }
 
-        if (id == R.id.dining_hall_menu)
-        {
-            TabFragment diningHallMenu = new TabFragment();
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            fragmentManager.beginTransaction().replace(R.id.content_main,diningHallMenu,diningHallMenu.getTag()).commit();
-            getSupportActionBar().setTitle("Dining Halls Menu");
-        }
-        else if (id == R.id.hour_operation)
-        {
-            HoursOfOperation hoursOfOperation = new HoursOfOperation();
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            fragmentManager.beginTransaction().replace(R.id.content_main,hoursOfOperation,hoursOfOperation.getTag()).commit();
-            getSupportActionBar().setTitle("Hours Of Operation");
-        }
-        else if (id == R.id.friend_location)
-        {
-            FriendLocation friendLocation = new FriendLocation();
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            fragmentManager.beginTransaction().replace(R.id.content_main,friendLocation,friendLocation.getTag()).commit();
-            getSupportActionBar().setTitle("Your Friends At This Dining Hall");
-        }
-        else if (id == R.id.swipe_counts)
-        {
-            SwipeCounter swipeCounter = new SwipeCounter();
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            fragmentManager.beginTransaction().replace(R.id.content_main,swipeCounter,swipeCounter.getTag()).commit();
-            getSupportActionBar().setTitle("Swipe Counter");
-        }
+    @Override
+    public void onLoaderReset(Loader<ArrayList<JSONObject>> loader) {
 
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
     }
 }
-
-
-
-
-
